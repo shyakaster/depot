@@ -34,7 +34,7 @@
   padding: 1em;
   margin-bottom: 2em;
   background-color: #f0f0f0;
-  font: bold smaller sans-serif;
+  font: bold larger sans-serif;
 }
 
 #columns {
@@ -49,8 +49,30 @@
   #side {
     float: left;
     padding: 1em 2em;
-    width: 13em;
+    width: 20em;
     background: #141;
+
+    /* START_HIGHLIGHT */
+    form, div {
+      display: inline;
+    }
+
+    input {
+      font-size: small;
+    }
+
+    #cart {
+      font-size: smaller;
+      color:     white;
+
+      table {
+        border-top:    1px dotted #595;
+        border-bottom: 1px dotted #595;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* END_HIGHLIGHT */
 
     ul {
       padding: 0;

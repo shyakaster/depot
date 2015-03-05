@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_product, only: [:show,:edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_product
   # GET /products
   # GET /products.json
   def index
@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+
   end
 
   # GET /products/new
@@ -71,4 +72,15 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
     end
+   def invalid_product
+     @product = Product.find(params[:id])
+     respond_to do |format|
+       format.html # show.html.erb
+       format.json { render :json => @product }
+     end
+   rescue ActiveRecord::RecordNotFound
+     logger.error "Attempt to access product #{ params[ :id ]}"
+     redirect_to products_url, :notice => 'Invalid product'
+
+   end
 end
