@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {}
+ id: 1234
 # column: value
 #
 two: {}

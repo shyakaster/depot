@@ -38,4 +38,27 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  #sending mails
+  config.action_mailer.perform_deliveries = true
+
+  Depot::Application.configure do
+    config.action_mailer.delivery_method = :test
+  end
+
+    Depot::Application.configure do
+      config.action_mailer.delivery_method = :sendmail
+      config.action_mailer.smtp_settings = {
+          address: "smtp.gmail.com",
+          port: 587,
+          domain: "domain.of.sender.net",
+          authentication: "plain",
+          user_name: "shyakaster@gmail.com",
+          password: "beatrice@60",
+          enable_starttls_auto: true
+      }
+    end
+
+
+
 end
